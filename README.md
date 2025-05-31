@@ -56,7 +56,8 @@ La arquitectura del sistema sigue el patrón de microservicios, en donde cada se
        v
 [ Eureka Server (registro de servicios) ]
 
----
+
+--
 
 ## 🚀 ¿Cómo ejecutar el sistema?
 
@@ -104,3 +105,19 @@ Ejemplo de cuerpo para crear un producto:
   "descripcion": "Café con leche",
   "precio": 9.5
 }
+
+---
+
+## 👨‍💻 Autor
+
+Este proyecto fue desarrollado por:
+
+**Miguel Angel Valle Durand**  
+Estudiante de Ingeniería de Sistemas  
+Curso: Taller de Aplicaciones Distribuidas  
+Universidad: [Universidad Nacional Mayor de San Marcos]  
+
+- 🔗 GitHub: [@MiguelVaDu](https://github.com/MiguelVaDu)
+- 📧 Correo: [miguelangel.valle@unmsm.edu.pe]
+
+Proyecto realizado como parte del **Tarea 01** del curso, con enfoque en arquitectura de microservicios, descubrimiento de servicios y API Gateway.
