@@ -1,14 +1,11 @@
 package com.coffecode.productservice.controller;
 
-import com.coffecode.productservice.dto.CreateProductRequestDTO;
-import com.coffecode.productservice.dto.ProductDTO;
+import com.coffecode.productservice.dto.*;
 import com.coffecode.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.coffecode.productservice.dto.UpdateProductRequestDTO;
-import com.coffecode.productservice.dto.UpdateStockRequestDTO;
 import jakarta.validation.Valid; // Importante para que se activen las validaciones en los DTOs
 
 import java.util.List;
@@ -56,5 +53,11 @@ public class ProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build(); // 204 No Content es una respuesta común para DELETE exitoso
+    }
+
+    @PostMapping("/stock/reduce")
+    public ResponseEntity<Void> reduceStock(@RequestBody List<UpdateStockItemDTO> items) {
+        productService.reduceStock(items);
+        return ResponseEntity.ok().build();
     }
 }

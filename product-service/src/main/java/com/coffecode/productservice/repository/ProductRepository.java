@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    // Spring Data JPA crea las implementaciones automáticamente
-    // Puedes añadir métodos de consulta personalizados aquí si los necesitas
+
 }

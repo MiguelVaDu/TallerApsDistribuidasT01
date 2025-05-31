@@ -1,9 +1,6 @@
 package com.coffecode.productservice.service;
 
-import com.coffecode.productservice.dto.CreateProductRequestDTO;
-import com.coffecode.productservice.dto.ProductDTO;
-import com.coffecode.productservice.dto.UpdateProductRequestDTO;
-import com.coffecode.productservice.dto.UpdateStockRequestDTO;
+import com.coffecode.productservice.dto.*;
 
 import java.util.List;
 
@@ -14,4 +11,5 @@ public interface ProductService {
     ProductDTO updateProduct(Long productId, UpdateProductRequestDTO updateRequest);
     ProductDTO updateStock(Long productId, UpdateStockRequestDTO updateStockRequest);
     void deleteProduct(Long productId);
+    void reduceStock(List<UpdateStockItemDTO> items);
 }

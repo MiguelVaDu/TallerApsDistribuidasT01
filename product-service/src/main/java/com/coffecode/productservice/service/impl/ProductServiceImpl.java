@@ -1,6 +1,6 @@
 package com.coffecode.productservice.service.impl;
 
-import com.coffecode.productservice.dto.ProductDTO;
+import com.coffecode.productservice.dto.*;
 import com.coffecode.productservice.entity.Product;
 import com.coffecode.productservice.exception.ProductNotFoundException;
 import com.coffecode.productservice.repository.ProductRepository;
@@ -8,9 +8,6 @@ import com.coffecode.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor; // Lombok para inyección de dependencias por constructor
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.coffecode.productservice.dto.CreateProductRequestDTO;
-import com.coffecode.productservice.dto.UpdateProductRequestDTO;
-import com.coffecode.productservice.dto.UpdateStockRequestDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,7 +105,22 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(productId);
         logger.info("Producto eliminado con ID: {}", productId);
     }
+    @Override
+    @Transactional // Es crucial que esta operación sea transaccional
+    public void reduceStock(List<UpdateStockItemDTO> items) {
+        for (UpdateStockItemDTO item : items) {
+            logger.info("Reduciendo stock para producto ID: {} en {} unidades", item.getProductId(), item.getQuantityToReduce());
+            Product product = productRepository.findById(item.getProductId())
+                    .orElseThrow(() -> new ProductNotFoundException("Producto no encontrado con ID: " + item.getProductId()));
 
+            if (product.getStock() < item.getQuantityToReduce()) {
+                throw new IllegalStateException("Stock insuficiente para el producto: " + product.getNombre());
+            }
+
+            product.setStock(product.getStock() - item.getQuantityToReduce());
+            productRepository.save(product);
+        }
+    }
     // Métodos de Mapeo
     private ProductDTO mapToDTO(Product product) {
         ProductDTO dto = new ProductDTO();
@@ -119,5 +131,5 @@ public class ProductServiceImpl implements ProductService {
         dto.setStock(product.getStock());
         return dto;
     }
-    // No necesitamos mapToEntity aquí porque los DTOs de request se mapean directamente en los métodos del servicio.
+
 }
