@@ -57,7 +57,7 @@ La arquitectura del sistema sigue el patrón de microservicios, en donde cada se
 [ Eureka Server (registro de servicios) ]
 ```
 
---
+---
 
 ## 🚀 ¿Cómo ejecutar el sistema?
 
@@ -105,7 +105,7 @@ Ejemplo de cuerpo para crear un producto:
   "descripcion": "Café con leche",
   "precio": 9.5
 }
-
+```
 ---
 
 ## 👨‍💻 Autor
