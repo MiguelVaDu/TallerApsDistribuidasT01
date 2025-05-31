@@ -55,7 +55,7 @@ La arquitectura del sistema sigue el patrón de microservicios, en donde cada se
        |
        v
 [ Eureka Server (registro de servicios) ]
-
+```
 
 --
 
@@ -66,7 +66,7 @@ La arquitectura del sistema sigue el patrón de microservicios, en donde cada se
 ```bash
 git clone https://github.com/MiguelVaDu/TallerApsDistribuidasT01.git
 cd TallerApsDistribuidasT01
-
+```
 ---
 
 ## 🧪 Pruebas con Insomnia
