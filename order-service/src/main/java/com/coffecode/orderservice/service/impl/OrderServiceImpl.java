@@ -128,7 +128,7 @@ public class OrderServiceImpl implements OrderService {
         PaymentRequestDTO paymentRequest = PaymentRequestDTO.builder()
                 .orderId(order.getId())
                 .amount(order.getTotalAmount())
-                .paymentMethod("CREDIT_CARD") // Método de pago por defecto para la simulación
+                .paymentMethod("CREDIT_CARD") // Metodo de pago por defecto para la simulación
                 .build();
         log.info("Iniciando pago para la orden {}", order.getId());
         return paymentServiceClient.processPayment(paymentRequest);
