@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PaymentResponseDTO {
     private String transactionId;
-    private String status; // APPROVED, DECLINED
+    private String status;
 }

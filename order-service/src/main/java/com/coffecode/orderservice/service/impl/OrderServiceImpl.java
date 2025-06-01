@@ -134,7 +134,7 @@ public class OrderServiceImpl implements OrderService {
         return paymentServiceClient.processPayment(paymentRequest);
     }
 
-    // ... getOrderById y los mapeos ...
+
     @Override
     public OrderResponseDTO getOrderById(Long orderId) {
         log.info("Buscando orden con ID: {}", orderId);

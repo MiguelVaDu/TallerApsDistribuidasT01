@@ -106,7 +106,7 @@ public class ProductServiceImpl implements ProductService {
         logger.info("Producto eliminado con ID: {}", productId);
     }
     @Override
-    @Transactional // Es crucial que esta operación sea transaccional
+    @Transactional
     public void reduceStock(List<UpdateStockItemDTO> items) {
         for (UpdateStockItemDTO item : items) {
             logger.info("Reduciendo stock para producto ID: {} en {} unidades", item.getProductId(), item.getQuantityToReduce());
