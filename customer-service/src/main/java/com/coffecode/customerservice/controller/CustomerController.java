@@ -2,6 +2,7 @@ package com.coffecode.customerservice.controller;
 
 import com.coffecode.customerservice.dto.CreateCustomerRequestDTO;
 import com.coffecode.customerservice.dto.CustomerDTO;
+import com.coffecode.customerservice.dto.LoginRequestDTO;
 import com.coffecode.customerservice.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,5 +32,10 @@ public class CustomerController {
     @GetMapping
     public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
         return ResponseEntity.ok(customerService.getAllCustomers());
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<CustomerDTO> login(@Valid @RequestBody LoginRequestDTO request) {
+        return ResponseEntity.ok(customerService.login(request));
     }
 }

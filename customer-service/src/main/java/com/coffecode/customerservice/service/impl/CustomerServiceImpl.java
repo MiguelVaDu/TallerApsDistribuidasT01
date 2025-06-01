@@ -2,6 +2,7 @@ package com.coffecode.customerservice.service.impl;
 
 import com.coffecode.customerservice.dto.CreateCustomerRequestDTO;
 import com.coffecode.customerservice.dto.CustomerDTO;
+import com.coffecode.customerservice.dto.LoginRequestDTO;
 import com.coffecode.customerservice.entity.Customer;
 import com.coffecode.customerservice.exception.CustomerNotFoundException;
 import com.coffecode.customerservice.repository.CustomerRepository;
@@ -53,6 +54,21 @@ public class CustomerServiceImpl implements CustomerService {
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public CustomerDTO login(LoginRequestDTO request) {
+        // Buscar al usuario por email
+        Customer customer = customerRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new CustomerNotFoundException("Credenciales inválidas")); // Mensaje genérico por seguridad
+
+        // Comparar la contraseña enviada con la hasheada en la BD
+        if (!passwordEncoder.matches(request.getPassword(), customer.getPassword())) {
+            throw new CustomerNotFoundException("Credenciales inválidas"); // Mensaje genérico
+        }
+
+        return mapToDTO(customer);
+    }
+
 
     private CustomerDTO mapToDTO(Customer customer) {
         // Usando el Patrón Builder que añadimos en el DTO
